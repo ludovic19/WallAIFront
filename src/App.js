@@ -6,7 +6,7 @@ import Home from './pages/Home'
 import Register from "./pages/Register";
 import CreatePost from './pages/CreatePost'
 import Login from "./pages/Login";
-import Landing from "./pages/Landing";
+import Landing from "./pages/Landing"
 
 const App = () => {
   return (

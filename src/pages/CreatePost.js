@@ -4,6 +4,9 @@ import preview from "../assets/preview.png";
 import FormField from "../components/FormField";
 import Loader from "../components/Loader";
 import { getRandomPrompt } from "../utils";
+import jwt_decode from "jwt-decode";
+import NavBar from "../components/NavBar"
+import Footer from "../components/Footer";
 
 const CreatePost = () => {
   const navigate = useNavigate();
@@ -11,6 +14,7 @@ const CreatePost = () => {
     name: "",
     prompt: "",
     photo: "",
+    userId: ""
   });
 
   const [generatingImg, setGeneratingImg] = useState(false);
@@ -29,8 +33,10 @@ const CreatePost = () => {
         })
         
         const data = await response.json();
+        const token = await localStorage.usertoken;
+        const decoded = await jwt_decode(token);
 
-        setForm({ ...form, photo: `data:image/jpeg;base64,${data.photo}`})
+        setForm({ ...form, photo: `data:image/jpeg;base64,${data.photo}`, userId : decoded.user._id})
       } catch (error) {
         alert(error);
       } finally {
@@ -78,6 +84,7 @@ const CreatePost = () => {
   };
 
   return (
+    <>
     <section className="max-w-7xl mx-auto">
       <div>
         <h1 className="font-extrabold text-[#222328] text-[32px]">Create</h1>
@@ -150,6 +157,7 @@ const CreatePost = () => {
         </div>
       </form>
     </section>
+    </>
   );
 }
 

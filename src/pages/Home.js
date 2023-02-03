@@ -2,6 +2,8 @@ import {useState, useEffect} from 'react'
 import Loader from '../components/Loader'
 import Card from '../components/Card'
 import FormField from '../components/FormField'
+import NavBar from "../components/NavBar"
+import Footer from "../components/Footer";
 
 
 const RenderCards = ({data , title}) => {
@@ -33,7 +35,6 @@ const Home = () => {
       })
       if(response.ok) {
         const result = await response.json();
-        console.log(response)
         setAllPosts(result.data.reverse());
     }
       } catch (error) {
@@ -63,6 +64,7 @@ const Home = () => {
     };
 
   return (
+    <>
     <section className="max-w-7xl mx-auto text-center">
       <div>
         <h1 className='font-extrabold text-[#222328] text-[32px]'>The Community Wall</h1>
@@ -104,6 +106,7 @@ const Home = () => {
        }
       </div>
     </section>
+    </>
   )
 }
 

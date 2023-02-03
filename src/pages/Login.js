@@ -40,7 +40,7 @@ const Login = () => {
            <div>
            <h2 className='mt-3'>Password :</h2>
            <input className='bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-[#4649ff] focus:border-[#4649ff] outline-none block w-full p-3'
-            type="text" name="email" value={password} onChange={(e) => setPassword(e.target.value)}/>
+            type="password" name="email" value={password} onChange={(e) => setPassword(e.target.value)}/>
            </div>
            <div className='text-center'>
            <button className="mt-4 text-white bg-[#6469ff] font-medium rounded-md text-xl w-full sm:w-auto px-5 py-2.5 text-center"
