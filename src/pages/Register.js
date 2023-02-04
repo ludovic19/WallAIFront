@@ -1,6 +1,7 @@
 import { useState } from 'react'
-import { useNavigate } from 'react-router-dom'
+import { useNavigate, Link } from 'react-router-dom'
 import { register } from '../utils/UserFunctions'
+import logo from "../assets/logo.jpg"
 
 
 
@@ -28,7 +29,12 @@ const Register = () => {
     }
 
   return (
-    <section className="max-w-7xl mx-auto ">
+    <>
+    <hearder  className="w-full flex justify-between items-center bg-white sm:px-8 px-4 py-4 border-b border-b-[#e6ebf4]">
+    <Link to="/" className="font-inter front-medium bg-[#6469ff] text-white px-4 py-2 rounded-md">Back</Link>
+    <Link to="/login" className="font-inter front-medium bg-green-600 text-white px-4 py-2 rounded-md">Login</Link>
+    </hearder>
+    <section className="max-w-7xl mx-auto mt-40 ">
       <div>
         <h1 className="font-extrabold text-[#222328] text-center text-[32px]">Please Register</h1>
       </div>
@@ -64,6 +70,12 @@ const Register = () => {
       </form>
       </div>
     </section>
+    <footer className="w-full flex justify-between items-center mt-64 sm:px-8 px-4 py-4 border-t border-t-[#e6ebf4]">
+        <img src={logo} alt="logo" className="w-28 object-contain"/>
+        <h3> © Wall AI 2023 </h3>
+        <h2 className='font-bold max-sm:hidden'>Created By :<br/> <span className='font-bold text-[#6449ff] text-xl'>Hicham HAJLA<br/> & Ludovic LEVEQUE</span></h2>
+      </footer>
+      </>
   )
 }
 
