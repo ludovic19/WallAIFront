@@ -2,8 +2,7 @@ import {useState, useEffect} from 'react'
 import Loader from '../components/Loader'
 import Card from '../components/Card'
 import FormField from '../components/FormField'
-import NavBar from "../components/NavBar"
-import Footer from "../components/Footer";
+
 
 
 const RenderCards = ({data , title}) => {
@@ -102,7 +101,6 @@ const Home = () => {
             </div>
           </>
          ) 
-        
        }
       </div>
     </section>
