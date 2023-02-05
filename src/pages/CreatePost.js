@@ -5,8 +5,6 @@ import FormField from "../components/FormField";
 import Loader from "../components/Loader";
 import { getRandomPrompt } from "../utils";
 import jwt_decode from "jwt-decode";
-import NavBar from "../components/NavBar"
-import Footer from "../components/Footer";
 
 const CreatePost = () => {
   const navigate = useNavigate();
@@ -97,10 +95,10 @@ const CreatePost = () => {
       <form className="mt-16 max-w-3xl" onSubmit={handleSubmit}>
         <div className="flex flex-col gap-5">
           <FormField
-            labelName="Your name"
+            labelName="Username"
             type="text"
             name="name"
-            placeholder="John Doe"
+            placeholder="John doe"
             value={form.name}
             handleChange={handleChange}
           />

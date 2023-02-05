@@ -4,9 +4,8 @@ import { register } from '../utils/UserFunctions'
 import logo from "../assets/logo.jpg"
 
 
-
-
 const Register = () => {
+    const [username, setUsername] = useState('')
     const [firstName, setFirstName] = useState('')
     const [lastName, setLastName] = useState('')
     const [email, setEmail] = useState('')
@@ -18,6 +17,7 @@ const Register = () => {
       e.preventDefault()
   
       const newUser = { // creates new object with name,email, password
+        username : username,
         first_name: firstName,
         last_name : lastName,
         email: email,
@@ -41,8 +41,13 @@ const Register = () => {
       <div className="mt-16">
       <form noValidate onSubmit={createUser}>
       <label>
+      <div>
+       <h2>Choose a Username :</h2>
+       <input className='bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-[#4649ff] focus:border-[#4649ff] outline-none block w-full p-3'
+        type="text" name="username" value={username} onChange={(e) => setUsername(e.target.value)}/>
+       </div>
        <div>
-       <h2>First Name :</h2>
+       <h2 className='mt-3'>First Name :</h2>
        <input className='bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-[#4649ff] focus:border-[#4649ff] outline-none block w-full p-3'
         type="text" name="first_name" value={firstName} onChange={(e) => setFirstName(e.target.value)}/>
        </div>
@@ -59,11 +64,11 @@ const Register = () => {
        <div>
        <h2 className='mt-3'>Password :</h2>
        <input className='bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-[#4649ff] focus:border-[#4649ff] outline-none block w-full p-3'
-        type="text" name="email" value={password} onChange={(e) => setPassword(e.target.value)}/>
+        type="password" name="password" value={password} onChange={(e) => setPassword(e.target.value)}/>
        </div>
        <div className='text-center'>
        <button className="mt-4 text-white bg-[#6469ff] font-medium rounded-md text-xl w-full sm:w-auto px-5 py-2.5 text-center"
-        type="submit" /*onClick={(e) => submit(e)}*/>Register</button>
+        type="submit">Register</button>
        </div>
      </label>
      

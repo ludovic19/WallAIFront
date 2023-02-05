@@ -1,4 +1,4 @@
-import {useState, useEffect} from 'react'
+import {useState, useEffect } from 'react'
 import logo from "../assets/logo.jpg"
 import preview from "../assets/preview.png"
 import { Link } from 'react-router-dom'
@@ -6,6 +6,7 @@ import FormField from '../components/FormField'
 import Loader from '../components/Loader'
 import Card from '../components/Card'
 import jwt_decode from "jwt-decode";
+
 
 const RenderCards = ({data , title}) => {
     if(data?.length > 0) {
@@ -24,15 +25,30 @@ const Profile = () => {
     const [searchedResults, setSearchedResults] = useState(null)
     const [searchTimeout, setSearchTimeout] = useState(null)
     const [details, setDetails] = useState({
+        username : "",
         first_name : "",
         last_name: "",
         email: "",
+        _id : ""
       });
+
+    const getProfil = async  () => {
+        const token = await localStorage.usertoken;
+        const decoded = await jwt_decode(token);
+        setDetails({
+          username : decoded.user.username,
+          first_name : decoded.user.first_name,
+          last_name: decoded.user.last_name,
+          email: decoded.user.email,
+          _id : decoded.user._id
+        })
+    
+      };
 
     const fetchPosts = async () => {
         setLoading(true);
         try {
-          const response = await fetch('http://localhost:8080/api/post',{
+          const response = await fetch(`http://localhost:8080/api/post/${details._id}`,{
           method:'GET',
           headers:{
             'Content-Type':'application/json',
@@ -48,18 +64,6 @@ const Profile = () => {
         setLoading(false)
         }
       }
-
-      const getProfil = async  () => {
-        const token = await localStorage.usertoken;
-        const decoded = await jwt_decode(token);
-        console.log(decoded);
-        setDetails({
-          first_name : decoded.user.first_name,
-          last_name: decoded.user.last_name,
-          email: decoded.user.email,
-        })
-    
-      };
   
       useEffect(() => {
         fetchPosts()
@@ -92,8 +96,8 @@ const Profile = () => {
     <section className="max-w-7xl mx-auto">
     <div className="text-left flex justify-around">
         <div>
-        <h1 className='font-extrabold text-[#222328] text-[32px] mt-8'>Username</h1>
-        <p className='mt-2 text-[#666e75] text-[16px] max-w[500px]'>Description</p>
+        <h1 className='font-extrabold text-[#222328] text-[32px] mt-8'>{details.username}</h1>
+        <p className='mt-2 text-[#666e75] text-[16px] max-w[500px]'>{details._id}</p>
         <h2 className='font-extrabold text-[#222328] text-[24px] mt-8'>{details.first_name} {details.last_name}</h2>
         <h2 className='font-extrabold text-[#222328] text-[24px] mt-8'>{details.email}</h2>
         </div>
