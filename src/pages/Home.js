@@ -2,6 +2,7 @@ import {useState, useEffect} from 'react'
 import Loader from '../components/Loader'
 import Card from '../components/Card'
 import FormField from '../components/FormField'
+import { Link } from 'react-router-dom'
 
 
 
@@ -65,6 +66,9 @@ const Home = () => {
   return (
     <>
     <section className="max-w-7xl mx-auto text-center">
+    <div className="w-full flex justify-end items-center bg-[#f9fafe] sm:px-8 px-4 py-4 ">
+    <Link to="/profile" className="font-inter front-medium bg-[#6469ff] w-25 text-white px-4 py-2 rounded-md">My Wall</Link>
+    </div>
       <div>
         <h1 className='font-extrabold text-[#222328] text-[32px]'>The Community Wall</h1>
         <p className='mt-2 text-[#666e75] text-[16px] max-w[500px]'>

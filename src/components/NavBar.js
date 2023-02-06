@@ -8,7 +8,8 @@ const NavBar = () => {
 
   const logOut = (e) => {
     e.preventDefault()
-    localStorage.removeItem('usertoken')
+    // localStorage.removeItem('usertoken')
+    localStorage.clear()
     navigate(`/`)
   }
 
