@@ -1,11 +1,10 @@
 import {useState, useEffect } from 'react'
 import logo from "../assets/logo.jpg"
-import preview from "../assets/preview.png"
 import { Link } from 'react-router-dom'
 import FormField from '../components/FormField'
 import Loader from '../components/Loader'
 import Card from '../components/Card'
-// import jwt_decode from "jwt-decode";
+
 
 
 const RenderCards = ({data , title}) => {
@@ -31,13 +30,12 @@ const Profile = () => {
         setLoading(true);
         try {
           const details = JSON.parse(localStorage.getItem('details')) || {};
-          const response = await fetch(`http://localhost:8080/api/post/${details._id}`,{
+          const response = await fetch(`http://localhost:8080/api/post/user/${details._id}`,{
           method:'GET',
           headers:{
             'Content-Type':'application/json',
           },
         })
-        console.log(details)
         if(response.ok) {
           const result = await response.json();
           setAllPosts(result.data.reverse());
@@ -76,17 +74,17 @@ const Profile = () => {
     <Link to="/home"><img src={logo} alt="logo" style={{width:"180px"}} className="object-contain sm:w-auto"/></Link>
     <Link to="/create-post" className="font-inter front-medium bg-[#6469ff] w-25 text-white px-4 py-2 rounded-md">Create</Link>
     </div>
+    <div className="sm:p-8 px-4 py-8 w-full bg-[#f9fafe] min-h-[calc(100vh-73px)]">
     <section className="max-w-7xl mx-auto">
-    <div className="text-left flex justify-around">
-        <div>
-        <h1 className='font-extrabold text-[#222328] text-[32px] mt-8'>{details.username}</h1>
+    <div className="text-left flex justify-around flex-wrap ">
+    <div>
+          <img src={`http://localhost:8080${details.image}`} alt="logo" className="w-40 h-80 rounded-full sm:w-auto mt-16 container mx-auto"/>
+        </div>
+        <div className='flex flex-col w-full' >
+        <h1 className=' font-extrabold text-[#222328] text-[32px] mt-8'>{details.username}</h1>
         <p className='mt-2 text-[#666e75] text-[16px] max-w[500px]'>Bio</p>
         <h2 className='font-extrabold text-[#222328] text-[24px] mt-8'>{details.first_name} {details.last_name}</h2>
         <h2 className='font-extrabold text-[#222328] text-[24px] mt-8'>{details.email}</h2>
-        </div>
-        <div>
-            <img src={`http://localhost:8080${details.image}`} alt="logo" style={{width:"200px", height:"200px", borderRadius:"100%"}} className="object-contain sm:w-auto mt-16"/>
-            {/* <img src={preview} alt="logo" style={{width:"180px"}} className="object-contain sm:w-auto mt-16"/> */}
         </div>
       </div>
       <div className="mt-16">
@@ -123,6 +121,7 @@ const Profile = () => {
        }
       </div>
     </section>
+    </div>
     </>
   )
 }

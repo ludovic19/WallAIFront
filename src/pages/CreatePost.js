@@ -17,6 +17,7 @@ const CreatePost = () => {
 
   const [generatingImg, setGeneratingImg] = useState(false);
   const [loading, setLoading] = useState(false);
+  // const details = JSON.parse(localStorage.getItem('details')) || {};
 
   const generateImage =  async () => {
     if(form.prompt) {

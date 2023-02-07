@@ -1,11 +1,12 @@
 import React from "react";
-
+import { Link } from "react-router-dom";
 import download from "../assets/download.png";
 import { downloadImage } from "../utils";
 
 const Card = ({ _id, name, prompt, photo }) => {
   return (
     <div className="rounded-xl group relative shadow-card hover:shadow-cardhover card">
+    <Link to={`/post-details/${_id}`}>
       <img
         className="w-full h-auto object-cover rounded-xl"
         src={photo}
@@ -33,6 +34,7 @@ const Card = ({ _id, name, prompt, photo }) => {
           </button>
         </div>
       </div>
+    </Link>
     </div>
   );
 };
