@@ -10,7 +10,7 @@ const Register = () => {
     const [lastName, setLastName] = useState('')
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
-    const [image, setImage] = useState(null)
+    // const [image, setImage] = useState(null)
     const [error, setError] = useState(null);
 
     let navigate = useNavigate()
@@ -24,7 +24,7 @@ const Register = () => {
       newUser.append('last_name', lastName)
       newUser.append('email', email)
       newUser.append('password', password)
-      newUser.append('image', image)
+      // newUser.append('image', image)
     
     const register = abc => {
         return axios.post('http://localhost:8080/auth/register', newUser, {
@@ -77,11 +77,11 @@ const Register = () => {
        <input className='bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-[#4649ff] focus:border-[#4649ff] outline-none block w-full p-3'
         type="password" name="password" value={password} onChange={(e) => setPassword(e.target.value)}/>
        </div>
-       <div>
+       {/* <div>
        <h2 className='mt-3'>Choose a profile picture : <span className="text-[#666e75] text-[12px]">(Optionnal)</span></h2>
        <input className='bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-[#4649ff] focus:border-[#4649ff] outline-none block w-full p-3'
         type="file" onChange={(e) => setImage(e.target.files[0])}/>
-       </div>
+       </div> */}
        <div className='text-center'>
        <button className="mt-4 text-white bg-[#6469ff] font-medium rounded-md text-xl w-full sm:w-auto px-5 py-2.5 text-center"
         type="submit">Register</button>
