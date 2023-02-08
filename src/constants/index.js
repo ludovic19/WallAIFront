@@ -12,7 +12,7 @@ export const surpriseMePrompts = [
     'A pencil and watercolor drawing of a bright city in the future with flying cars',
     'A sunlit indoor lounge area with a pool with clear water and another pool with translucent pastel pink water, next to a big window, digital art',
     'A fortune-telling shiba inu reading your fate in a giant hamburger, digital art',
-    'A sea otter with a pearl earring" by Johannes Vermeer',
+    'A sea otter with a pearl earring by Johannes Vermeer',
     'An oil pastel drawing of an annoyed cat in a spaceship',
     'A painting of a fox in the style of Starry Night',
     'A bowl of soup that looks like a monster, knitted out of wool',

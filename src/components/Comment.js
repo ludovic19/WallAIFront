@@ -1,6 +1,5 @@
 import { useState,useEffect } from "react"
 import axios from "axios"
-import FormField from "../components/FormField"; 
 
 
 const Comment = ({post}) => {
@@ -47,19 +46,21 @@ const Comment = ({post}) => {
 
       const deleteComment = async (idComment) => {
         axios.delete(`http://localhost:8080/api/comment/${idComment}`)
-        .then(console.log(idComment))
+        .then(() => {
+          setComments(prevComments => prevComments.filter(comment => comment._id !== idComment));
+        });
       }
     
      
   return (
     <>
-    <h1 className='font-extrabold text-[#222328] text-[32px]'>Comments</h1> 
+    <h1 className='font-extrabold text-[#222328] text-[32px] mb-6'>Comments</h1> 
     <div> 
     {comments && comments.map(e => {
         return(
-        <div key={e._id}>
-        <h2 className='font-extrabold text-[#222328] text-[16px]'>{e.comment}</h2>
-        <h2 className='text-[#666e75]'>By {e.author}<span className='text-[#666e75] text-[12px]'>   {new Date(e.date).toLocaleString()}</span> </h2>
+        <div className="mb-2" key={e._id}>
+        <h2 className='font-extrabold text-[#222328] text-[20px] text-left'>{e.comment}</h2>
+        <h2 className='text-[#666e75] text-left'>By : {e.author}<span className='text-[#666e75] text-[12px]'> {new Date(e.date).toLocaleString()}</span> </h2>
         {e.userId === details._id && <button className="mb-2 text-white bg-[#ff0000] font-medium rounded-md text-sm w-full sm:w-auto px-5 py-2.5 text-center" onClick={() => deleteComment(e._id)}>Delete</button>}
         </div> 
         )})}
