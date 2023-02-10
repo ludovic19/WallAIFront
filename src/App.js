@@ -8,7 +8,7 @@ import Landing from "./pages/Landing";
 import Layout from "./Layout";
 import PostDetails from "./pages/PostDetails";
 import Profile from "./pages/Profile";
-import ProtectedRoutes from "./utils/protectRoutes";
+import ProtectedRoutes from "./utils/ProtectedRoutes";
 
 const App = () => {
   return (
