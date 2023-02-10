@@ -8,6 +8,7 @@ import Landing from "./pages/Landing";
 import Layout from "./Layout";
 import PostDetails from "./pages/PostDetails";
 import Profile from "./pages/Profile";
+import ProtectedRoutes from "./utils/protectRoutes";
 
 const App = () => {
   return (
@@ -16,13 +17,15 @@ const App = () => {
         <Route path="/" element={<Landing />} />
         <Route path="/register" element={<Register />} />
         <Route path="/login" element={<Login />} />
-        {/* protection des routes */}
-        <Route path="/profile" element={<Profile />} />
-        <Route path="" element={<Layout />}>
-          <Route path="/home" element={<Home />} />
-          <Route path="/create-post" element={<CreatePost />} />
-          <Route path="/post-details/:_id" element={<PostDetails />} />
-          <Route path="*" element={<h1>Page Not Found</h1>} />
+        {/* protection des chemins avec protectedroutes*/}
+        <Route element={<ProtectedRoutes />}>
+          <Route path="/profile" element={<Profile />} />
+          {/* layout */}
+          <Route path="" element={<Layout />}>
+            <Route path="/home" element={<Home />} />
+            <Route path="/create-post" element={<CreatePost />} />
+            <Route path="/post-details/:_id" element={<PostDetails />} />
+          </Route>
         </Route>
       </Routes>
     </>
