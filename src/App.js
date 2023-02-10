@@ -25,6 +25,7 @@ const App = () => {
             <Route path="/home" element={<Home />} />
             <Route path="/create-post" element={<CreatePost />} />
             <Route path="/post-details/:_id" element={<PostDetails />} />
+            <Route path="*" element={<h1>Page not found </h1>} />
           </Route>
         </Route>
       </Routes>
