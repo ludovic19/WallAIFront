@@ -74,18 +74,18 @@ const Profile = () => {
     );
   };
 
-  // Handle input changes and update the profile state
+  // maj du profil
   const handleInputChange = (event) => {
     event.preventDefault();
     const { name, value } = event.target;
     setProfile({ ...profile, [name]: value });
   };
-
+  //maj de l'image
   const handleProfilePictureChange = (event) => {
     setProfile({ ...profile, image: event.target.files[0] });
   };
 
-  // Function to handle the update profile form submit
+  // maj et validation du profile
   const handleUpdateProfile = (event) => {
     event.preventDefault();
 
@@ -117,7 +117,7 @@ const Profile = () => {
   useEffect(() => {
     fetchPosts();
     fetchUser();
-  }, [])
+  }, []);
 
   console.log(profile.image);
 
@@ -163,7 +163,7 @@ const Profile = () => {
                 {user.username}
               </h1>
               <p className="mt-2 text-[#666e75] text-[16px] max-w[500px]">
-                Co-founder and CEO of Wall-AI © <br/>
+                Co-founder and CEO of Wall-AI © <br />
                 Show us your imagination and creativity !
               </p>
               <h2 className="font-bold text-[#222328] text-[24px] mt-6">
@@ -173,88 +173,93 @@ const Profile = () => {
                 {user.email}
               </h2>
             </div>
+          </div>
+          {showForm && (
+            <div>
+              <form onSubmit={handleUpdateProfile}>
+                <h2 className="font-bold">Update Profile</h2>
+                <div className="mt-4">
+                  <h2 className="block text-sm font-medium text-gray-900">
+                    Username
+                  </h2>
+                  <input
+                    className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-[#4649ff] focus:border-[#4649ff] outline-none block w-full p-3"
+                    placeholder={details.username}
+                    type="text"
+                    name="username"
+                    value={profile.username}
+                    onChange={handleInputChange}
+                  />
+                </div>
+                <div>
+                  <h2 className="block text-sm font-medium text-gray-900">
+                    Email
+                  </h2>
+                  <input
+                    className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-[#4649ff] focus:border-[#4649ff] outline-none block w-full p-3"
+                    placeholder={details.email}
+                    type="email"
+                    name="email"
+                    value={profile.email}
+                    onChange={handleInputChange}
+                  />
+                </div>
+                <div>
+                  <h2 className="block text-sm font-medium text-gray-900">
+                    First Name
+                  </h2>
+                  <input
+                    className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-[#4649ff] focus:border-[#4649ff] outline-none block w-full p-3"
+                    placeholder={details.first_name}
+                    type="text"
+                    name="first_name"
+                    value={profile.first_name}
+                    onChange={handleInputChange}
+                  />
+                </div>
+                <div>
+                  <h2 className="block text-sm font-medium text-gray-900">
+                    Last Name
+                  </h2>
+                  <input
+                    className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-[#4649ff] focus:border-[#4649ff] outline-none block w-full p-3"
+                    placeholder={details.last_name}
+                    type="text"
+                    name="last_name"
+                    value={profile.last_name}
+                    onChange={handleInputChange}
+                  />
+                </div>
+                <div>
+                  <h2 className="block text-sm font-medium text-gray-900">
+                    Profile Picture
+                  </h2>
+                  <input
+                    className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-[#4649ff] focus:border-[#4649ff] outline-none block w-full p-3"
+                    type="file"
+                    name="image"
+                    onChange={handleProfilePictureChange}
+                  />
+                </div>
+                <div className="text-center">
+                  <button
+                    className="mt-3 text-white bg-green-600 font-medium rounded-md text-sm w-full sm:w-auto px-5 py-2.5"
+                    type="submit"
+                  >
+                    Update
+                  </button>
+                </div>
+              </form>
             </div>
-            {showForm && (
-              <div>
-                <form onSubmit={handleUpdateProfile}>
-                  <h2 className="font-bold">Update Profile</h2>
-                  <div className="mt-4">
-                    <h2 className="block text-sm font-medium text-gray-900">
-                      Username
-                    </h2>
-                    <input
-                      className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-[#4649ff] focus:border-[#4649ff] outline-none block w-full p-3"
-                      placeholder={details.username}
-                      type="text"
-                      name="username"
-                      value={profile.username}
-                      onChange={handleInputChange}
-                    />
-                  </div>
-                  <div>
-                    <h2 className="block text-sm font-medium text-gray-900">
-                      Email
-                    </h2>
-                    <input
-                      className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-[#4649ff] focus:border-[#4649ff] outline-none block w-full p-3"
-                      placeholder={details.email}
-                      type="email"
-                      name="email"
-                      value={profile.email}
-                      onChange={handleInputChange}
-                    />
-                  </div>
-                  <div>
-                    <h2 className="block text-sm font-medium text-gray-900">
-                      First Name
-                    </h2>
-                    <input
-                      className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-[#4649ff] focus:border-[#4649ff] outline-none block w-full p-3"
-                      placeholder={details.first_name}
-                      type="text"
-                      name="first_name"
-                      value={profile.first_name}
-                      onChange={handleInputChange}
-                    />
-                  </div>
-                  <div>
-                    <h2 className="block text-sm font-medium text-gray-900">
-                      Last Name
-                    </h2>
-                    <input
-                      className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-[#4649ff] focus:border-[#4649ff] outline-none block w-full p-3"
-                      placeholder={details.last_name}
-                      type="text"
-                      name="last_name"
-                      value={profile.last_name}
-                      onChange={handleInputChange}
-                    />
-                  </div>
-                  <div>
-                    <h2 className="block text-sm font-medium text-gray-900">
-                      Profile Picture
-                    </h2>
-                    <input
-                      className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-[#4649ff] focus:border-[#4649ff] outline-none block w-full p-3"
-                      type="file"
-                      name="image"
-                      onChange={handleProfilePictureChange}
-                    />
-                  </div>
-                  <div className="text-center">
-                    <button
-                      className="mt-3 text-white bg-green-600 font-medium rounded-md text-sm w-full sm:w-auto px-5 py-2.5"
-                      type="submit"
-                    >
-                      Update
-                    </button>
-                  </div>
-                </form>
-              </div>
-            )}
-          
+          )}
+
           <div className="text-center">
-          <button  className="font-inter front-medium bg-[#6469ff] mt-8 w-25 text-white px-4 py-2 rounded-md" onClick={toggleForm}>Update Profile</button>
+            <button
+              className="font-inter front-medium bg-[#6469ff] mt-8 w-25 text-white px-4 py-2 rounded-md"
+              onClick={toggleForm}
+            >
+              Update Profile
+            </button>
           </div>
           <div className="mt-16">
             <FormField
